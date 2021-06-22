@@ -15,13 +15,22 @@ app = Flask(__name__)
 
 @app.route('/forecast', methods=["GET", "POST"])
 def forecast():
-    a = request.form["place"]
     
-    params = {
-        'appid' : API_KEY,
-        'q' : a,
-        'units' : 'metric'
-    }
+    if request.method == 'GET':
+        params = {
+            'appid' : API_KEY,
+            'q' : 'Tokyo',
+            'units' : 'metric'
+        }
+    else:
+        a = request.form["place"]
+        params = {
+            'appid' : API_KEY,
+            'q' : a,
+            'units' : 'metric'
+        }
+
+
     
     url = FORECAST_API + '?' + urllib.parse.urlencode(params)
     req = urllib.request.Request(url)
