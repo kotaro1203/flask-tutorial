@@ -12,9 +12,9 @@
 </head>
 <body>
     <p>これからの天気を表示します</p>
-    <table class="table">
+    <table class="table table-striped">
         <thead>
-            <tr>
+            <tr class="table-info">
                 <th>日時</th>
                 <th>気温</th>
                 <th>湿度</th>
@@ -38,7 +38,7 @@
     <form method="POST" action="/forecast">
         <label for="placeInput">地名を入力<label>
         <input id="placeInput" name="place" type="text" value="Tokyo" >
-        <input type="submit" value="送信！">
+        <input type="submit" value="送信！" class="btn btn-primary">
     </form>
 </body>
 </html>
