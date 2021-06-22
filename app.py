@@ -13,13 +13,16 @@ FORECAST_API = "https://api.openweathermap.org/data/2.5/forecast"
 
 app = Flask(__name__)
 
-@app.route('/forecast')
+@app.route('/forecast', methods=["GET", "POST"])
 def forecast():
+    a = request.form["place"]
+    
     params = {
         'appid' : API_KEY,
-        'q' : 'Tokyo',
+        'q' : a,
         'units' : 'metric'
     }
+    
     url = FORECAST_API + '?' + urllib.parse.urlencode(params)
     req = urllib.request.Request(url)
     res = urllib.request.urlopen(req)
